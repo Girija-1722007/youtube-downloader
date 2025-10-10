@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}Select Category{% endblock %}
+{% block content %}
+<h1>Select Your Category</h1>
+<a href="{{ url_for('download_content', category='educational') }}">
+    <button>Educational</button>
+</a>
+<a href="{{ url_for('download_content', category='entertainment') }}">
+    <button>Entertainment</button>
+</a>
+<a href="{{ url_for('download_history') }}"><button class="secondary-btn">View History</button></a>
+{% endblock %}

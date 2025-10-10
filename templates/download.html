@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}{{ category }} Download{% endblock %}
+{% block content %}
+<h1>Download {{ category }} Content</h1>
+<form method="POST">
+    <input type="text" name="url" placeholder="Paste YouTube link here" required> 
+    <button type="submit">Start Download</button>
+</form>
+
+{% if error_msg %}
+<p class="error-msg">{{ error_msg }}</p>
+{% endif %}
+
+{% if download_link %}
+<p>
+    <a href="{{ download_link }}" style="text-decoration: underline; color: #FFD700;" download>
+        Click here to download the video
+    </a>
+</p>
+{% endif %}
+
+<a href="{{ url_for('select_category') }}"><button>Back to Selection</button></a>
+<a href="{{ url_for('download_history') }}"><button class="secondary-btn">View History</button></a>
+{% endblock %}

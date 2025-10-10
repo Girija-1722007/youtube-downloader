@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}Download History{% endblock %}
+{% block content %}
+<h1>Your Download History</h1>
+
+{% if history %}
+<table class="history-table">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Category</th>
+            <th>Timestamp</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in history | reverse %}
+        <tr>
+            <td><a href="{{ item.url }}" target="_blank">{{ item.title }}</a></td>
+            <td>{{ item.category | capitalize }}</td>
+            <td>{{ item.timestamp }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p>No downloads recorded yet.</p>
+{% endif %}
+
+<a href="{{ url_for('select_category') }}"><button>Start New Download</button></a>
+{% endblock %}
